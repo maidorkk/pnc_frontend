@@ -1,24 +1,46 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useState } from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import LoginForm from './components/LoginForm';
+import Check from './components/Check';
+import Admin from './components/Admin';
+import Cashier from './components/Cashier';
+import CreateStudent from './pages/CreateStudent';
+import SearchStudent from './pages/SearchStudent';
+import {GlobalProvider} from './components/GlobalState';
+
+
 
 function App() {
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+
+<GlobalProvider>
+
+  <Router>
+
+<main>
+
+    <Switch>
+
+
+        <Route exact path="/" component={Check} />
+        <Route exact path="/admin" component={Admin} />
+        <Route exact path="/create" component={CreateStudent} />
+        <Route exact path="/search" component={SearchStudent} />
+
+    </Switch>
+</main>
+
+
+
+  </Router>
+   </GlobalProvider>
+
+
   );
 }
 
